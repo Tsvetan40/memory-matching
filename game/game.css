@@ -37,6 +37,10 @@
     cursor: pointer;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .nav-item.level:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -48,4 +52,41 @@
     background: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+
+.wrapper {
+    border: 1px solid red;
+    /* height: 100vh; */
+    height: 550px;
+    width: 550px;
+    padding: 10px;
+}
+
+#main {
+    display: grid;
+}
+
+.easy-main {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 120px;    
+    gap: 10px;
+}
+
+.easy-main > span {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.medium-main {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 80px;    
+    gap: 5px;
+}
+
+.hard-main {
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 60px;    
+    gap: 5px;
 }
