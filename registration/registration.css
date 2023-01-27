@@ -51,14 +51,6 @@ header > h1 {
 
 }
 
-.not-found {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    display: none;
-}
-
 #registration {
     font-weight: 600;
     background-color: #F8F9FA;
@@ -74,4 +66,14 @@ header > h1 {
 #registration:hover {
     background-color: #335F8D;
     color: #F8F9FA;
+}
+
+.error-hidden {
+    display: none;
+}
+
+.error {
+    display: flex;
+    color: red;
+    font-family: sans-serif;
 }

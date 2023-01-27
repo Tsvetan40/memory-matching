@@ -1,14 +1,36 @@
-const register = document.getElementById('register')
+import {User} from "../User.js"
+
+const register = document.getElementById('registration')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+
+
+password.addEventListener('keydown', () => {
+    if (email.checkValidity() == false) {
+        register.style.cursor = 'not-allowed'
+        register.disabled = true
+    } else {
+        register.style.cursor = 'pointer'
+        register.disabled = false
+
+    }
+})
+
+email.addEventListener('keydown', () => {
+    if (email.checkValidity() == false) {
+        register.style.cursor = 'not-allowed'
+        register.disabled = true
+    } else {
+        register.style.cursor = 'pointer'
+        register.disabled = false
+
+    }
+})
 
 register.addEventListener('click', () => {
-    const email = document.getElementById('email')
-    const password = document.getElementById('password')
-    const form = document.getElementById('form')
     
-    const emailValue = email.value
-    const passwordValue = password.value
-
-    console.log(emailValue, passwordValue)
-    console.log(form.valid)
+    if (email.value == null || password.value == null) {
+        return
+    }
 
 })
