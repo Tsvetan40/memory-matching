@@ -11,4 +11,8 @@ export class User {
     getPassword() {
         return this.password
     }
+
+    equals(user) {
+        return this.email == user.email && this.password == user.password
+    }
 }

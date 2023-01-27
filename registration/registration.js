@@ -7,7 +7,7 @@ const password = document.getElementById('password')
 
 
 password.addEventListener('keydown', () => {
-    if (email.checkValidity() == false) {
+    if (password.checkValidity() == false) {
         register.style.cursor = 'not-allowed'
         register.disabled = true
     } else {

@@ -59,6 +59,10 @@ header > h1 {
     display: none;
 }
 
+.not-found-hidden {
+    display: none;
+}
+
 #login {
     font-weight: 600;
     background-color: #F8F9FA;
