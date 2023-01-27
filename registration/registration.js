@@ -29,26 +29,29 @@ email.addEventListener('keydown', () => {
 })
 
 form.addEventListener('submit', (e) => {
-    
-    debugger
+    //remove later
+    localStorage.clear()
+    e.preventDefault()    
     if (email.value == "" || password.value == "") {
-        e.preventDefault()
+        return
     }
 
     const divError = document.getElementsByClassName('error-hidden')[0]
     
     if (localStorage.getItem(email.value) != null) {
         divError.classList.add('error')
+        return
 
-        e.preventDefault()
-    
     } else {
         if (divError.classList.contains('error')) {
             divError.classList.remove('error')
         }
     }
     
-
+    email.value = ''
+    password.value = ''
+    
     window.localStorage.setItem(email.value, new User(email.value, password.value))
-    return true
+    window.location.href = '/game/game.html'
+
 })
