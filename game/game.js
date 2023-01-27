@@ -11,13 +11,29 @@ const main = document.getElementById('main')
 
 
 function styleMain(levelNumber) {
-
-    const imageSelector = new ImageSelector(levelNumber)
-    console.log("levelnumber " + levelNumber)
-    imageSelector.getImages.forEach(image => {
+    const imageSelector = new ImageSelector(levelNumber / 2)
+    const imgArr = Array.from( imageSelector.getImages())
+    
+    imgArr.forEach(image => {
+        
+        const div = document.createElement('div')
+        div.classList.add('grid-inner')
         const img = document.createElement('img')
+
         img.src = image
-        main.appendChild(img)
+        div.appendChild(img)
+        main.appendChild(div)
+    })
+
+    imgArr.forEach(image => {
+        
+        const div = document.createElement('div')
+        div.classList.add('grid-inner')
+        const img = document.createElement('img')
+
+        img.src = image
+        div.appendChild(img)
+        main.appendChild(div)
     })
 
     if (levelNumber == EASY_NUMBER) {
@@ -48,17 +64,21 @@ start.addEventListener('click', () => {
     const liArr = Array.from(li)
     let hasLevel = false
     
+    debugger
     liArr.forEach(item => {
         
         if(item.firstChild.classList.contains('underline')) {
             hasLevel = true
             if (item.firstChild.classList.contains('easy')) {
+                debugger
                 styleMain(EASY_NUMBER)
             
             } else if (item.firstChild.classList.contains('medium')) {
+                debugger
                 styleMain(MEDIUM_NUMBER)
             
             } else {
+                debugger
                 styleMain(HARD_NUMBER)
             }
         }

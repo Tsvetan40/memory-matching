@@ -1,6 +1,6 @@
 export class ImageSelector {
     constructor(number) {
-        const images = ['./../static/pictures/ant.png', 
+        this.images = ['./../static/pictures/ant.png', 
         './../static/pictures/bat.png',
         './../static/pictures/cactus.png',
         './../static/pictures/cat.png',
@@ -15,7 +15,7 @@ export class ImageSelector {
         './../static/pictures/GOAT.png',
         './../static/pictures/hamster.png',
         './../static/pictures/kangaroo.png',
-        './../static/pictures/lion.png',
+        './../static/pictures/lion.jpg',
         './../static/pictures/lizard.png',
         './../static/pictures/octopus.png',
         './../static/pictures/palm.png',
@@ -40,12 +40,13 @@ export class ImageSelector {
         }
 
         let totalSize = 32;
+        let numberRemovals = 32 - number
         const count = 1
-        while(number != 0) {
+        while(numberRemovals != 0) {
             const index = Math.random() * totalSize
-            this.images.splise(index, 1)
+            this.images.splice(index, 1)
             totalSize--
-            number--
+            numberRemovals--
         }
 
     }
