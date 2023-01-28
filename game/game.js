@@ -31,7 +31,15 @@ function createImage(image) {
 function initiolizeMain(number) {
     
     const imageSelector = new ImageSelector(number / 2)
-    const images = imageSelector.getImages()
+    const imagesSelector = imageSelector.getImages()
+
+    const images = []
+    
+    imagesSelector.forEach(image => {
+        images.push(image)
+        images.push(image)
+    })
+
 
     images.forEach(image => {
         createImage(image)
@@ -50,10 +58,13 @@ start.addEventListener('click', () => {
     levels.forEach(level => {
         if (level.firstChild.classList.contains('underline')) {
             if (level.firstChild.classList.contains('easy')) {
+                main.classList.add('easy-main')
                 initiolizeMain(EASY_NUMBER)
             } else if (level.firstChild.classList.contains('medium')) {
+                main.classList.add('medium-main')
                 initiolizeMain(MEDIUM_NUMBER)
             } else if (level.firstChild.classList.contains('hard')) {
+                main.classList.add('hard-main')
                 initiolizeMain(HARD_NUMBER)
             }
         }
