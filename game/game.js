@@ -1,94 +1,61 @@
-import { ImageSelector } from "./image-selector.js"
+import { ImageSelector } from './image-selector.js'
 
 const EASY_NUMBER = 16
 const MEDIUM_NUMBER = 32
 const HARD_NUMBER = 64
 
-
-const start = document.getElementById('start')
-const ul = document.getElementById('ul-container')
+const levels = document.querySelectorAll('.level')
 const main = document.getElementById('main')
+const start = document.getElementById('start')
 
+function createImage(image) {
+    const backImage = document.createElement('img')
+    const frontImage = document.createElement('img')
 
-function styleMain(levelNumber) {
-    const imageSelector = new ImageSelector(levelNumber / 2)
-    const imgArr = Array.from( imageSelector.getImages())
-    
-    imgArr.forEach(image => {
-        
-        const div = document.createElement('div')
-        div.classList.add('grid-inner')
-        const img = document.createElement('img')
+    backImage.classList.add('card')
+    backImage.classList.add('back')
+    backImage.src = './../static/pictures/back-card.png'
 
-        img.src = image
-        div.appendChild(img)
-        main.appendChild(div)
-    })
+    frontImage.classList.add('card')
+    frontImage.classList.add('front')
+    frontImage.src = image
 
-    imgArr.forEach(image => {
-        
-        const div = document.createElement('div')
-        div.classList.add('grid-inner')
-        const img = document.createElement('img')
+    const div = document.createElement('div')
+    div.classList.add('card-container')
+    div.appendChild(backImage)
+    div.appendChild(frontImage)
 
-        img.src = image
-        div.appendChild(img)
-        main.appendChild(div)
-    })
-
-    if (levelNumber == EASY_NUMBER) {
-        main.classList.add('easy-main')
-    } else if (levelNumber == MEDIUM_NUMBER) {
-        main.classList.add('medium-main')
-    } else {
-        main.classList.add('hard-main')
-    }
+    main.appendChild(div)
 }
 
-ul.addEventListener('click', (e) => {
-    const level = e.target
-    if (level.classList.contains('easy')) {
-        level.classList.toggle('underline')
-        main.classList.toggle('easy')
-        //to do remove from other underlines!
-    } else if (level.classList.contains('medium')) {
-        level.classList.toggle('underline')
-    } else if (level.classList.contains('hard')) {
-        level.classList.toggle('underline')
-    }
+function initiolizeMain(number) {
+    
+    const imageSelector = new ImageSelector(number / 2)
+    const images = imageSelector.getImages()
+
+    images.forEach(image => {
+        createImage(image)
+    })
+
+}
+
+levels.forEach(level => {
+    level.addEventListener('click', (e) => {
+        const target = e.target
+        target.classList.toggle('underline')
+    })
 })
 
 start.addEventListener('click', () => {
-
-    const li = document.getElementsByClassName('nav-item')
-    const liArr = Array.from(li)
-    let hasLevel = false
-    
-    debugger
-    liArr.forEach(item => {
-        
-        if(item.firstChild.classList.contains('underline')) {
-            hasLevel = true
-            if (item.firstChild.classList.contains('easy')) {
-                debugger
-                styleMain(EASY_NUMBER)
-            
-            } else if (item.firstChild.classList.contains('medium')) {
-                debugger
-                styleMain(MEDIUM_NUMBER)
-            
-            } else {
-                debugger
-                styleMain(HARD_NUMBER)
+    levels.forEach(level => {
+        if (level.firstChild.classList.contains('underline')) {
+            if (level.firstChild.classList.contains('easy')) {
+                initiolizeMain(EASY_NUMBER)
+            } else if (level.firstChild.classList.contains('medium')) {
+                initiolizeMain(MEDIUM_NUMBER)
+            } else if (level.firstChild.classList.contains('hard')) {
+                initiolizeMain(HARD_NUMBER)
             }
         }
-        
     })
-
-
-
-    if (hasLevel == false) {
-        alert('No level selected! Please select level!')
-        return
-    }
 })
