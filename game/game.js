@@ -5,6 +5,7 @@ const MEDIUM_NUMBER = 32
 const HARD_NUMBER = 64
 
 const levels = document.querySelectorAll('.level')
+
 const main = document.getElementById('main')
 const start = document.getElementById('start')
 
@@ -47,14 +48,53 @@ function initiolizeMain(number) {
 
 }
 
-levels.forEach(level => {
-    level.addEventListener('click', (e) => {
-        const target = e.target
-        target.classList.toggle('underline')
+function disableAllLevels() {
+    levels.forEach(level => {
+        level.removeEventListener('click', clickEventListener)
     })
+}
+
+function disableLevelSelection(levels, target) {
+    
+
+    if (main.classList.length != 0) {
+
+        levels.forEach(level => {
+            console.log(level.firstChild == target)
+            if (target != level.firstChild) {
+                level.firstChild.classList.remove('underline')
+                level.removeEventListener('click', clickEventListener)
+            }
+        })
+        return 
+    } 
+
+    levels.forEach(level => {
+        console.log(level.firstChild == target)
+        if (target != level.firstChild) {
+            level.firstChild.classList.remove('underline')
+        }
+    })
+
+}
+
+function clickEventListener(e) {
+    const target = e.target
+    target.classList.toggle('underline')
+
+    disableLevelSelection(levels, target)
+}
+
+
+
+levels.forEach(level => {
+    level.addEventListener('click', clickEventListener)
 })
 
 start.addEventListener('click', () => {
+    
+    disableAllLevels()
+    
     levels.forEach(level => {
         if (level.firstChild.classList.contains('underline')) {
             if (level.firstChild.classList.contains('easy')) {
