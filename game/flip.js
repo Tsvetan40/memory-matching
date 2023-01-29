@@ -67,6 +67,3 @@ function rotateParents(element1, element2) {
     } ,1000)
 
 }
-
-// console.log(target)
-// console.log('clickable=' + target.getAttribute('clickable'))

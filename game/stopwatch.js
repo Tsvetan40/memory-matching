@@ -1,3 +1,5 @@
+import { Shuffle } from './shuffle.js'
+
 const start = document.getElementById('start')
 const minutes = document.getElementById('minutes')
 const seconds = document.getElementById('seconds')
@@ -31,16 +33,20 @@ async function startStopWatch() {
 
 }
 
-function normaliseCards() {
-    debugger
+function normaliseCards(shuffledContainers) {
+    
     const frontCards = document.querySelectorAll('.front')
 
-    frontCards.forEach(card => {
-        if (!card.classList.contains('card')) {
-            card.classList.add('card')
-            card.parentElement.style.transform = 'rotateY(360deg)'
+    for (let i = 0; i < frontCards.length; i++) {
+        debugger
+        console.log(frontCards[i], shuffledContainers[i])
+        frontCards[i].src = shuffledContainers[i].lastChild.src
+        
+        if (!frontCards[i].classList.contains('card')) {
+            frontCards[i].classList.add('card')
+            frontCards[i].parentElement.style.transform = 'rotateY(360deg)'
         }
-    })
+    }
 
     const backCards = document.querySelectorAll('.back')
     backCards.forEach(card => {
@@ -57,6 +63,11 @@ restart.addEventListener('click', () => {
     minutes.textContent = '00'
     clearInterval(myInterval)
 
-    normaliseCards()
+    const divContainers = document.querySelectorAll('.card-container')
+    
+    const shuffle = new Shuffle(divContainers)
+    const shuffledContainers = shuffle.getCardsContainer()
+
+    normaliseCards(shuffledContainers)
     startStopWatch()
 })

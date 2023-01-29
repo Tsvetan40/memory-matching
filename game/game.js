@@ -1,4 +1,5 @@
 import { ImageSelector } from './image-selector.js'
+import { Shuffle } from './shuffle.js'
 
 const EASY_NUMBER = 16
 const MEDIUM_NUMBER = 32
@@ -28,7 +29,7 @@ function createImage(image) {
     div.appendChild(backImage)
     div.appendChild(frontImage)
 
-    main.appendChild(div)
+    return div
 }
 
 function initiolizeMain(number) {
@@ -43,11 +44,17 @@ function initiolizeMain(number) {
         images.push(image)
     })
 
-
+    let containerImages = []
     images.forEach(image => {
-        createImage(image)
+        containerImages.push(createImage(image))
     })
 
+    const shuffle = new Shuffle(containerImages)
+    const shuffledContainers = shuffle.getCardsContainer()    
+
+    shuffledContainers.forEach(div => {
+        main.appendChild(div)
+    })
 }
 
 function disableAllLevels() {
