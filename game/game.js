@@ -85,8 +85,6 @@ function clickEventListener(e) {
     disableLevelSelection(levels, target)
 }
 
-
-
 levels.forEach(level => {
     level.addEventListener('click', clickEventListener)
 })
