@@ -21,6 +21,7 @@
 .header-inner {
     display: flex;
     align-items: flex-end;
+    gap: 7px;
 }
 
 #ul-container {
@@ -46,7 +47,7 @@
     text-decoration: underline;
 }
 
-#start {
+.button {
     border: none;
     color: #fff;
     background: none;
