@@ -33,5 +33,7 @@ async function startStopWatch() {
 }
 
 restart.addEventListener('click', () => {
+    seconds.textContent = '00'
+    minutes.textContent = '00'
     clearInterval(myInterval)
 })

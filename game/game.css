@@ -59,7 +59,6 @@
     display: flex;
     padding: 10px;
     position: relative;
-    border: 2px solid black;
     gap: 20px;
 }
 
@@ -145,19 +144,7 @@
     font-family: sans-serif;
 }
 
-#minutes {
-
-}
-
-#seconds {
-
-}
-
 #seconds::before {
     content: ':';
     padding-right: 5px;
-}
-
-.stopwatch-inner {
-
 }
