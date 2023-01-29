@@ -58,4 +58,5 @@ restart.addEventListener('click', () => {
     clearInterval(myInterval)
 
     normaliseCards()
+    startStopWatch()
 })
