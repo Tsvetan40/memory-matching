@@ -60,7 +60,6 @@ function disableLevelSelection(levels, target) {
     if (main.classList.length != 0) {
 
         levels.forEach(level => {
-            console.log(level.firstChild == target)
             if (target != level.firstChild) {
                 level.firstChild.classList.remove('underline')
                 level.removeEventListener('click', clickEventListener)
@@ -70,7 +69,6 @@ function disableLevelSelection(levels, target) {
     } 
 
     levels.forEach(level => {
-        console.log(level.firstChild == target)
         if (target != level.firstChild) {
             level.firstChild.classList.remove('underline')
         }

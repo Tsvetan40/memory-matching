@@ -56,10 +56,11 @@
 }
 
 .wrapper {
-    width: 64rem;
-    height: 40rem;
+    display: flex;
     padding: 10px;
     position: relative;
+    border: 2px solid black;
+    gap: 20px;
 }
 
 .card-container {
@@ -116,4 +117,47 @@
 .hard-main {
     grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: 3.7rem;
+}
+
+.stopwatch-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+#stopwatch-title {
+    font-family: sans-serif;
+    text-decoration: underline;
+    font-weight: 200;
+    font-size: 25px;
+}
+
+#clock-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.stopwatch-item {
+    font-size: 23px;
+    font-family: sans-serif;
+}
+
+#minutes {
+
+}
+
+#seconds {
+
+}
+
+#seconds::before {
+    content: ':';
+    padding-right: 5px;
+}
+
+.stopwatch-inner {
+
 }
