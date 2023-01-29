@@ -4,7 +4,6 @@ const seconds = document.getElementById('seconds')
 const restart = document.getElementById('restart')
 var myInterval
 
-start.addEventListener('click', startStopWatch)
 
 async function startStopWatch() {
     let secondsNumber = 0
@@ -32,8 +31,31 @@ async function startStopWatch() {
 
 }
 
+function normaliseCards() {
+    debugger
+    const frontCards = document.querySelectorAll('.front')
+
+    frontCards.forEach(card => {
+        if (!card.classList.contains('card')) {
+            card.classList.add('card')
+            card.parentElement.style.transform = 'rotateY(360deg)'
+        }
+    })
+
+    const backCards = document.querySelectorAll('.back')
+    backCards.forEach(card => {
+        if (!card.classList.contains('card')) {
+            card.classList.add('card')
+        }
+    })
+}
+
+start.addEventListener('click', startStopWatch)
+
 restart.addEventListener('click', () => {
     seconds.textContent = '00'
     minutes.textContent = '00'
     clearInterval(myInterval)
+
+    normaliseCards()
 })

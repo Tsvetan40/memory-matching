@@ -6,7 +6,6 @@ var secondCard
 var counter = 0
 
 function checkEndGame() {
-    debugger
     const hiddenImages = document.querySelectorAll('.front')
     isEnd = true
     hiddenImages.forEach(image => {
