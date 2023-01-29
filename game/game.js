@@ -4,9 +4,8 @@ const EASY_NUMBER = 16
 const MEDIUM_NUMBER = 32
 const HARD_NUMBER = 64
 
-const levels = document.getElementsByClassName('level')
-const levelsArray = Array.from(levels)
-console.log('levels=' + levels)
+const levels = document.querySelectorAll('.level')
+
 const main = document.getElementById('main')
 const start = document.getElementById('start')
 
@@ -49,13 +48,26 @@ function initiolizeMain(number) {
 
 }
 
+function disableAllLevels() {
+    levels.forEach(level => {
+        level.removeEventListener('click', clickEventListener)
+    })
+}
+
 function disableLevelSelection(levels, target) {
     
-    const targetClasses = Array.from(target.classList)
-    const filterClasses = targetClasses.filter(element => element == 'easy' || element == 'medium' || element == 'hard')
-    const classname = filterClasses[0]
 
-    debugger
+    if (main.classList.length != 0) {
+
+        levels.forEach(level => {
+            console.log(level.firstChild == target)
+            if (target != level.firstChild) {
+                level.firstChild.classList.remove('underline')
+                level.removeEventListener('click', clickEventListener)
+            }
+        })
+        return 
+    } 
 
     levels.forEach(level => {
         console.log(level.firstChild == target)
@@ -63,22 +75,26 @@ function disableLevelSelection(levels, target) {
             level.firstChild.classList.remove('underline')
         }
     })
+
 }
 
 function clickEventListener(e) {
     const target = e.target
     target.classList.toggle('underline')
 
-    disableLevelSelection(levelsArray, target)
+    disableLevelSelection(levels, target)
 }
 
 
 
-levelsArray.forEach(level => {
+levels.forEach(level => {
     level.addEventListener('click', clickEventListener)
 })
 
 start.addEventListener('click', () => {
+    
+    disableAllLevels()
+    
     levels.forEach(level => {
         if (level.firstChild.classList.contains('underline')) {
             if (level.firstChild.classList.contains('easy')) {
