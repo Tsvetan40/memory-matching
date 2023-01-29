@@ -16,10 +16,12 @@ function createImage(image) {
     backImage.classList.add('card')
     backImage.classList.add('back')
     backImage.src = './../static/pictures/back-card.png'
+    backImage.setAttribute('clickable', true)
 
     frontImage.classList.add('card')
     frontImage.classList.add('front')
     frontImage.src = image
+    frontImage.setAttribute('clickable', false)
 
     const div = document.createElement('div')
     div.classList.add('card-container')
