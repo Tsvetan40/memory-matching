@@ -1,5 +1,6 @@
 const main = document.getElementById('main')
-
+const closePopup = document.getElementById('close')
+const dialog = document.getElementById('popup')
 
 var firstCard
 var secondCard
@@ -44,7 +45,7 @@ main.addEventListener('click', (e) => {
                 removeClassCard(firstCard.parentElement.querySelector('.card.front'),
                  secondCard.parentElement.querySelector('.card.front'))
                 if (checkEndGame()) {
-                    alert("You have finished the game! Congratulations!")
+                    dialog.showModal()
                 }
             }
         }
@@ -67,3 +68,7 @@ function rotateParents(element1, element2) {
     } ,1000)
 
 }
+
+closePopup.addEventListener('click', () => {
+    dialog.close()
+})

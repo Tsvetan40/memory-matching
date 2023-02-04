@@ -152,6 +152,60 @@
     cursor: pointer;
 }
 
+
+#popup {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    flex-grow: 10;
+    padding: 10px;
+    border: 1px solid #252525;
+    border-radius: 5px;
+}
+
+#popup-header {
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #252525;
+}
+
+.popup-header-item {
+    font-size: 2rem;
+    color: #252525;
+    font-family: sans-serif;
+}
+
+#close {
+    font-weight: 500;
+    color: #252525;
+    border: 1px solid #252525;
+    cursor: pointer;
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+
+#dialog-main {
+    padding-top: 1rem;
+}
+
+#dialog-main > p {
+    padding: 5px;
+    font-size: 2rem;
+    font-family: sans-serif;
+    color: #252525;
+}
+
+
+/* 
+    will need this
+#dialog-main > p > span:last-child {
+   
+} */
+
+
 @media screen and (max-width: 600px) {
 
     #header {
