@@ -3,7 +3,6 @@ export class Shuffle {
         this.cardsContainer = cardsContainer
         const length = cardsContainer.length
 
-        debugger
         for (let i = 0; i < length; i++) {
             const randomNumber = Math.floor( Math.random() * length)
             let firstImage = this.cardsContainer[i].lastChild

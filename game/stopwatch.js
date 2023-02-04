@@ -38,7 +38,7 @@ function normaliseCards(shuffledContainers) {
     const frontCards = document.querySelectorAll('.front')
 
     for (let i = 0; i < frontCards.length; i++) {
-        debugger
+        
         console.log(frontCards[i], shuffledContainers[i])
         frontCards[i].src = shuffledContainers[i].lastChild.src
         
