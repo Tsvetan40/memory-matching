@@ -31,6 +31,8 @@ async function startStopWatch() {
 
     }, 1000)
 
+    localStorage.setItem('interval', myInterval)
+
 }
 
 function normaliseCards(shuffledContainers) {

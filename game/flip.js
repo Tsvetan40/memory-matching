@@ -45,6 +45,11 @@ main.addEventListener('click', (e) => {
                 removeClassCard(firstCard.parentElement.querySelector('.card.front'),
                  secondCard.parentElement.querySelector('.card.front'))
                 if (checkEndGame()) {
+                    window.clearInterval(localStorage.getItem('interval'))
+                    const score = document.querySelector('#dialog-main > p > span:last-child')
+                    const minutes = document.getElementById('minutes')
+                    const seconds = document.getElementById('seconds')
+                    score.textContent = `${minutes.textContent} : ${seconds.textContent}`
                     dialog.showModal()
                 }
             }
