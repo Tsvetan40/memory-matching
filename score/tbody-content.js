@@ -14,7 +14,9 @@ export function generateTabeBody(level) {
         results = JSON.parse(window.localStorage.getItem(HARD_TABLE))
     }
 
-
+    if (results == null) {
+        return
+    }
 
     const sorted = results.sort((a, b) => {
         return toSeconds(a) - toSeconds(b)
