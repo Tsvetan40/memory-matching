@@ -1,5 +1,8 @@
 #main {
     display: flex;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
 }
 
 .table {
@@ -8,10 +11,29 @@
     flex-grow: 1;
     box-shadow: 0px 2px 7px #b08536;
     padding: 5px;
-    background: #ffb858
+    background: #ffb858;
+}
+
+#main::-webkit-scrollbar {
+    width: .5rem;
+    border-radius: 10px;
+}
+
+#main::-webkit-scrollbar-track {
+    background-color: #ffb858;
+    border-radius: 10px;
+    margin-block: .5rem;
+}
+
+
+#main::-webkit-scrollbar-thumb {
+    background-color: #ffff;
+    border: 1px solid #333;
+    border-radius: 10px;
 }
 
 #title {
+    position: sticky;
     color: #fff;
     font-family: sans-serif;
     font-size: 2rem;
