@@ -29,8 +29,6 @@ email.addEventListener('keydown', () => {
 })
 
 form.addEventListener('submit', (e) => {
-    //remove later
-    localStorage.clear()
     e.preventDefault()    
     if (email.value == "" || password.value == "") {
         return
@@ -48,10 +46,10 @@ form.addEventListener('submit', (e) => {
         }
     }
     
+    window.sessionStorage.setItem('user', JSON.stringify(new User(email.value, password.value)))
+    window.localStorage.setItem(email.value, JSON.stringify (new User(email.value, password.value)))
+    
     email.value = ''
     password.value = ''
-    
-    window.localStorage.setItem(email.value, new User(email.value, password.value))
     window.location.href = '/game/game.html'
-
 })

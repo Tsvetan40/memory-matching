@@ -6,6 +6,10 @@ var firstCard
 var secondCard
 var counter = 0
 
+const EASY_TABLE = 'easy_table'
+const MEDIUM_TABLE = 'medium_table'
+const HARD_TABLE = 'hard_table'
+
 function checkEndGame() {
     const hiddenImages = document.querySelectorAll('.front')
     isEnd = true
@@ -50,12 +54,69 @@ main.addEventListener('click', (e) => {
                     const minutes = document.getElementById('minutes')
                     const seconds = document.getElementById('seconds')
                     score.textContent = `${minutes.textContent} : ${seconds.textContent}`
+                    
+                    saveToTable(score)
+                    
                     dialog.showModal()
                 }
             }
         }
     }
 })
+
+function saveToTable(score) {
+    const loggedUserEmail = window.sessionStorage.getItem('user')
+    console.log(loggedUserEmail)
+    debugger
+    if (loggedUserEmail == null) {
+        alert('can not save the result')
+        return
+    }
+    
+
+    const level = document.querySelector('.underline')
+    
+
+    if (level.textContent == 'Easy') {
+        let results = window.localStorage.getItem(EASY_TABLE)
+        if (results == null) {
+            results = []
+            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        } else {
+            const resultsArr = Array.from(results)
+            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+            resultsArr.forEach(results => {console.log(results)})
+        }
+
+        window.localStorage.setItem(EASY_TABLE, resultsArr)
+
+    } else if (level.textContent == 'Medium') {
+        let results = window.localStorage.getItem(MEDIUM_TABLE)
+        if (results == null) {
+            results = []
+            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        } else {
+            const resultsArr = Array.from(results)
+            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})    
+        }
+
+        window.localStorage.setItem(MEDIUM_TABLE, results)
+
+    } else if (level.textContent == 'Hard') {
+        let results = window.localStorage.getItem(HARD_TABLE)
+        if (results == null) {
+            results = []
+            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        } else {
+            const resultsArr = Array.from(results)
+            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})    
+        }
+
+        window.localStorage.setItem(HARD_TABLE, results)
+    }
+
+}
+
 
 function removeClassCard(card1, card2) {
     card1.classList.remove('card')
