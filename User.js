@@ -15,7 +15,7 @@ export class User {
     equals(user) {
         console.log(user.email + " " + user.password)
         console.log(user['email'] + " " + user['password'])
-        debugger
+        
         return this.email == user.email && this.password == user.password
     }
 }

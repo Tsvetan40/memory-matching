@@ -65,7 +65,7 @@ main.addEventListener('click', (e) => {
 })
 
 function saveToTable(score) {
-    const loggedUserEmail = window.sessionStorage.getItem('user')
+    const loggedUserEmail = JSON.parse(window.sessionStorage.getItem('user')) 
     console.log(loggedUserEmail)
     debugger
     if (loggedUserEmail == null) {
@@ -73,46 +73,34 @@ function saveToTable(score) {
         return
     }
     
-
     const level = document.querySelector('.underline')
-    
 
     if (level.textContent == 'Easy') {
-        let results = window.localStorage.getItem(EASY_TABLE)
+        let results = JSON.parse(window.localStorage.getItem(EASY_TABLE))
         if (results == null) {
             results = []
-            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
-        } else {
-            const resultsArr = Array.from(results)
-            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})
-            resultsArr.forEach(results => {console.log(results)})
         }
 
-        window.localStorage.setItem(EASY_TABLE, resultsArr)
+        results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        window.localStorage.setItem(EASY_TABLE, JSON.stringify(results))
 
     } else if (level.textContent == 'Medium') {
-        let results = window.localStorage.getItem(MEDIUM_TABLE)
+        let results = JSON.parse(window.localStorage.getItem(MEDIUM_TABLE))
         if (results == null) {
             results = []
-            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
-        } else {
-            const resultsArr = Array.from(results)
-            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})    
         }
 
-        window.localStorage.setItem(MEDIUM_TABLE, results)
+        results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        window.localStorage.setItem(MEDIUM_TABLE, JSON.stringify(results))
 
     } else if (level.textContent == 'Hard') {
-        let results = window.localStorage.getItem(HARD_TABLE)
+        let results = JSON.parse(window.localStorage.getItem(HARD_TABLE))
         if (results == null) {
             results = []
-            results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
-        } else {
-            const resultsArr = Array.from(results)
-            resultsArr.push({'email': loggedUserEmail['email'], 'result': score.textContent})    
         }
 
-        window.localStorage.setItem(HARD_TABLE, results)
+        results.push({'email': loggedUserEmail['email'], 'result': score.textContent})
+        window.localStorage.setItem(HARD_TABLE, JSON.stringify(results))
     }
 
 }
