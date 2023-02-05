@@ -1,3 +1,7 @@
+body {
+    background-color: #F8F9FA;
+}
+
 #main {
     display: flex;
     max-height: 500px;
