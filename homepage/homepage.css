@@ -9,49 +9,6 @@ body {
     background-color: #F8F9FA;
 }
 
-#header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: #252525;
-}
-
-#title {
-    font-size: 1.5rem;
-    color: #F8F9FA;
-}
-
-.auth {
-    display: flex;
-    gap: 10px;
-}
-
-.btn {
-    border: none;
-    padding: 0.3rem;
-    font-size: 0.9rem;
-    border-radius: 6px;
-    background-color: teal;
-    color: #F8F9FA;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: none;
-    text-decoration: underline;
-}
-
-#login {
-
-}
-
-
-
-#reg {
-
-}
-
 #main {
     padding: 1rem;
 }
