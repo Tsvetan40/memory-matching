@@ -34,14 +34,16 @@ function clearInputs(email, password) {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    
     const user = new User(email.value, password.value)
     const storageUser = JSON.parse(window.localStorage.getItem(email.value))
     
-    console.log(storageUser)
     if (storageUser == null) {
-        const errorDiv = document.getElementsByClassName('not-found-hidden')[0]
-        errorDiv.classList.remove('not-found-hidden')
+        debugger
+        const errorDiv = document.getElementsByClassName('error')[0]
+        if (errorDiv.classList.contains('not-found-hidden')) {
+            errorDiv.classList.remove('not-found-hidden')
+        }
+
         errorDiv.classList.add('not-found')
         return
     }

@@ -67,7 +67,6 @@ main.addEventListener('click', (e) => {
 function saveToTable(score) {
     const loggedUserEmail = JSON.parse(window.sessionStorage.getItem('user')) 
     console.log(loggedUserEmail)
-    debugger
     if (loggedUserEmail == null) {
         alert('can not save the result')
         return

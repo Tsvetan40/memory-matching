@@ -198,13 +198,10 @@
     color: #252525;
 }
 
-
-/* 
-    will need this
-#dialog-main > p > span:last-child {
-   
-} */
-
+.nav-item > span > a {
+    color: #fff;
+    text-decoration: none;
+}
 
 @media screen and (max-width: 600px) {
 

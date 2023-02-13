@@ -29,7 +29,7 @@ export function generateTabeBody(level) {
         const tdTime = document.createElement('td')
         
         
-        tdPosition.textContent = `${index}`
+        tdPosition.textContent = `${index + 1}`
         tdPosition.classList.add('tbody-item')
         
         tdEmail.textContent = `${result['email']}`
